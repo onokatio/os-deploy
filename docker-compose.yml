@@ -1,0 +1,16 @@
+version: "3"
+services:
+  deployer:
+    build:
+      context: ./openshift-ansible
+      dockerfile: images/installer/Dockerfile
+    image: openshift-ansible
+    user: "1000:root"
+    network_mode: "bridge"
+    volumes:
+      - ".vagrant/machines/default/virtualbox/private_key:/opt/app-root/src/.ssh/id_rsa"
+      - "./inventory:/tmp/inventory"
+    environment:
+      INVENTORY_FILE: /tmp/inventory
+      PLAYBOOK_FILE: playbooks/byo/config.yml
+      OPTS: '-vvv'
