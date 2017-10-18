@@ -13,4 +13,4 @@ services:
     environment:
       INVENTORY_FILE: /tmp/inventory
       PLAYBOOK_FILE: playbooks/byo/config.yml
-      OPTS: '-vvv'
+      OPTS: '-vvvv'
