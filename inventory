@@ -1,12 +1,24 @@
 [OSEv3:children]
 masters
+nodes
 
 [OSEv3:vars]
-ansible_ssh_user=vagrant
-ansible_ssh_private_key_file=/opt/app-root/src/.ssh/id_rsa
-ansible_become=true
+#openshift_release=v3.6.0
+openshift_image_tag=v3.6.0
 deployment_type=origin
+openshift_check_min_host_disk_gb=1
+openshift_check_min_host_memory_gb=0.5
+openshift_disable_check=docker_storage
 containerized=true
 
 [masters]
-10.3.8.147
+192.168.1.7 ansible_ssh_user=vagrant ansible_become=true ansible_ssh_private_key_file=/opt/app-root/src/.ssh/master
+
+[nodes]
+192.168.1.8 ansible_ssh_user=vagrant ansible_become=true ansible_ssh_private_key_file=/opt/app-root/src/.ssh/node
+
+#[oo_masters_to_config]
+#10.16.249.72 ansible_ssh_user=vagrant ansible_become=true ansible_ssh_private_key_file=/opt/app-root/src/.ssh/id_rsa
+
+#[oo_nodes_to_config]
+#10.16.249.72 ansible_ssh_user=vagrant ansible_become=true ansible_ssh_private_key_file=/opt/app-root/src/.ssh/id_rsa

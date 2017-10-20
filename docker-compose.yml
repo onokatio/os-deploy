@@ -8,9 +8,10 @@ services:
     user: "1000:root"
     network_mode: "bridge"
     volumes:
-      - ".vagrant/machines/default/virtualbox/private_key:/opt/app-root/src/.ssh/id_rsa"
+      - ".vagrant/machines/master/virtualbox/private_key:/opt/app-root/src/.ssh/master"
+      - ".vagrant/machines/node/virtualbox/private_key:/opt/app-root/src/.ssh/node"
       - "./inventory:/tmp/inventory"
     environment:
       INVENTORY_FILE: /tmp/inventory
       PLAYBOOK_FILE: playbooks/byo/config.yml
-      OPTS: '-vvvv'
+      #OPTS: '-vvvv'
